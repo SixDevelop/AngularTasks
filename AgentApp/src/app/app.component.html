@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="input-field-container">
+    <div class="input-container">
+      <p>Количество километров</p>
+      <input (keyup)="onInputDistance($event)" type="text">
+    </div>
+    <div class="input-container">
+      <p>Возраст</p>
+      <input (keyup)="onInputAge($event)" type="text">
+    </div>
+    <div class="input-container">
+      <p>Размер багажа</p>
+      <input (keyup)="onInputWeight($event)" type="text">
+    </div>
+    <button (click) = "onClick()">Рассчитать</button>
+  </div>
+  <p class="section" *ngIf = 'rzdLuxCost'>Предложения:</p>
+  <p class = "section" *ngIf = '!rzdLuxCost'>Введите все необходимые данные чтоб рассчитать стоимость проезда </p>
+  <div class="output-field-container">
+    <ul class="ul" *ngIf = 'rzdLuxCost'>
+      <li class="mainSection"><p class="text">Аэрофлот</p></li>
+      <ul class = "inUl">
+        <li *ngIf = 'aeroEcoCost'><p class = "text">{{aeroEcoCost}}</p></li>
+        <li *ngIf = 'aeroAdvCost'><p class = "text">{{aeroAdvCost}}</p></li>
+        <li *ngIf = 'aeroLuxCost'><p class = "text">{{aeroLuxCost}}</p></li>
+      </ul>
+      <li class = "mainSection"><p class="text">РЖД</p></li>
+      <ul class="inUl">
+        <li *ngIf = 'rzdEcoCost'><p class = "text">{{rzdEcoCost}}</p></li>
+        <li *ngIf = 'rzdAdvCost'><p class = "text">{{rzdAdvCost}}</p></li>
+        <li *ngIf = 'rzdLuxCost'><p class = "text">{{rzdLuxCost}}</p></li>
+      </ul>
+    </ul>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
